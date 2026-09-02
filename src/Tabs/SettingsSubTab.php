@@ -8,6 +8,7 @@ use Closure;
 use Illuminate\Contracts\Support\Htmlable;
 use Islamv\FilamentSettingsPlugin\Concerns\HasLocales;
 use Islamv\FilamentSettingsPlugin\Concerns\HasSort;
+use Spatie\LaravelSettings\Settings;
 
 /**
  * A sub-tab within a main SettingsTab.
@@ -52,9 +53,6 @@ abstract class SettingsSubTab
         return null;
     }
 
-    /**
-     * @return array
-     */
     public function schema(): array
     {
         return [];
@@ -205,7 +203,7 @@ abstract class SettingsSubTab
 
         // Auto-derive: e.g., parent=static-pages, key=privacy-policy → "page_settings_static_pages_privacy_policy"
         $parent = str_replace('-', '_', $this->getParentTabKey());
-        $own    = str_replace('-', '_', $this->getKey());
+        $own = str_replace('-', '_', $this->getKey());
 
         return "page_settings_{$parent}_{$own}";
     }
@@ -223,7 +221,7 @@ abstract class SettingsSubTab
             return [];
         }
 
-        /** @var \Spatie\LaravelSettings\Settings $settings */
+        /** @var Settings $settings */
         $settings = app($settingsClass);
 
         $data = [];
@@ -252,7 +250,7 @@ abstract class SettingsSubTab
             $data = ($this->beforeSave)($data) ?? $data;
         }
 
-        /** @var \Spatie\LaravelSettings\Settings $settings */
+        /** @var Settings $settings */
         $settings = app($settingsClass);
 
         foreach (get_object_vars($settings) as $property => $_) {

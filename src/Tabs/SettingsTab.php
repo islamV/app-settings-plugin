@@ -8,6 +8,7 @@ use Closure;
 use Illuminate\Contracts\Support\Htmlable;
 use Islamv\FilamentSettingsPlugin\Concerns\HasLocales;
 use Islamv\FilamentSettingsPlugin\Concerns\HasSort;
+use Spatie\LaravelSettings\Settings;
 
 /**
  * Base class for all main settings tabs.
@@ -57,9 +58,6 @@ abstract class SettingsTab
         return null;
     }
 
-    /**
-     * @return array
-     */
     public function schema(): array
     {
         return [];
@@ -238,7 +236,7 @@ abstract class SettingsTab
         }
 
         // Auto-derive from key: e.g., "payment" → "page_settings_payment"
-        return 'page_settings_' . str_replace('-', '_', $this->getKey());
+        return 'page_settings_'.str_replace('-', '_', $this->getKey());
     }
 
     public function callBeforeSave(array $data): array
@@ -270,7 +268,7 @@ abstract class SettingsTab
             return [];
         }
 
-        /** @var \Spatie\LaravelSettings\Settings $settings */
+        /** @var Settings $settings */
         $settings = app($settingsClass);
 
         $data = [];
@@ -297,7 +295,7 @@ abstract class SettingsTab
 
         $data = $this->callBeforeSave($data);
 
-        /** @var \Spatie\LaravelSettings\Settings $settings */
+        /** @var Settings $settings */
         $settings = app($settingsClass);
 
         foreach (get_object_vars($settings) as $property => $_) {

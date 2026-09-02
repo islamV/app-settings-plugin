@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Islamv\FilamentSettingsPlugin\Tabs\Defaults;
 
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Support\Icons\Heroicon;
 use Islamv\FilamentSettingsPlugin\Settings\GeneralSettings;
 use Islamv\FilamentSettingsPlugin\Tabs\SettingsTab;

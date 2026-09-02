@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Islamv\FilamentSettingsPlugin\Tests\Unit;
 
 use Islamv\FilamentSettingsPlugin\Registry\SettingsRegistry;
-use Islamv\FilamentSettingsPlugin\Tabs\SettingsTab;
 use Islamv\FilamentSettingsPlugin\Tabs\SettingsSubTab;
+use Islamv\FilamentSettingsPlugin\Tabs\SettingsTab;
 use Islamv\FilamentSettingsPlugin\Tests\TestCase;
 
 class SettingsRegistryTest extends TestCase
@@ -30,7 +30,7 @@ class SettingsRegistryTest extends TestCase
 
     public function test_first_registered_wins_without_force(): void
     {
-        $original    = $this->makeFakeTab('payments', 10);
+        $original = $this->makeFakeTab('payments', 10);
         $replacement = $this->makeFakeTab('payments', 99);
 
         $this->registry->registerTab($original);
@@ -44,7 +44,7 @@ class SettingsRegistryTest extends TestCase
 
     public function test_can_force_replace_tab(): void
     {
-        $original    = $this->makeFakeTab('payments', 10);
+        $original = $this->makeFakeTab('payments', 10);
         $replacement = $this->makeFakeTab('payments', 99);
 
         $this->registry->registerTab($original);
@@ -80,7 +80,7 @@ class SettingsRegistryTest extends TestCase
     public function test_sub_tabs_attached_to_parent(): void
     {
         $parentTab = $this->makeFakeTab('static-pages', 10);
-        $subTab    = $this->makeFakeSubTab('privacy-policy', 'static-pages');
+        $subTab = $this->makeFakeSubTab('privacy-policy', 'static-pages');
 
         $this->registry->registerTab($parentTab);
         $this->registry->registerSubTab($subTab);
@@ -115,8 +115,8 @@ class SettingsRegistryTest extends TestCase
     public function test_duplicate_sub_tabs_not_registered(): void
     {
         $parent = $this->makeFakeTab('static-pages', 10);
-        $sub1   = $this->makeFakeSubTab('privacy-policy', 'static-pages');
-        $sub2   = $this->makeFakeSubTab('privacy-policy', 'static-pages'); // duplicate key
+        $sub1 = $this->makeFakeSubTab('privacy-policy', 'static-pages');
+        $sub2 = $this->makeFakeSubTab('privacy-policy', 'static-pages'); // duplicate key
 
         $this->registry->registerTab($parent);
         $this->registry->registerSubTab($sub1);
@@ -132,7 +132,8 @@ class SettingsRegistryTest extends TestCase
 
     private function makeFakeTab(string $key, int $sort): SettingsTab
     {
-        return new class($key, $sort) extends SettingsTab {
+        return new class($key, $sort) extends SettingsTab
+        {
             public function __construct(
                 private readonly string $k,
                 private readonly int $s,
@@ -159,7 +160,8 @@ class SettingsRegistryTest extends TestCase
 
     private function makeFakeSubTab(string $key, string $parentKey): SettingsSubTab
     {
-        return new class($key, $parentKey) extends SettingsSubTab {
+        return new class($key, $parentKey) extends SettingsSubTab
+        {
             public function __construct(
                 private readonly string $k,
                 private readonly string $p,

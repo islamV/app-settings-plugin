@@ -77,7 +77,7 @@ class SettingsRegistry
      */
     public function registerSubTab(SettingsSubTab $subTab): void
     {
-        $key = $subTab->getParentTabKey() . '.' . $subTab->getKey();
+        $key = $subTab->getParentTabKey().'.'.$subTab->getKey();
 
         if (isset($this->subTabs[$key])) {
             return;
@@ -88,7 +88,7 @@ class SettingsRegistry
 
     public function removeSubTab(string $parentKey, string $key): void
     {
-        unset($this->subTabs[$parentKey . '.' . $key]);
+        unset($this->subTabs[$parentKey.'.'.$key]);
     }
 
     // ─────────────────────────────────────────

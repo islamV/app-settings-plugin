@@ -134,7 +134,7 @@ class TabDiscovery
     protected function fileToClass(string $filePath): ?string
     {
         // Convert file path to namespace
-        $relativePath = str_replace($this->path . DIRECTORY_SEPARATOR, '', $filePath);
+        $relativePath = str_replace($this->path.DIRECTORY_SEPARATOR, '', $filePath);
         $relativePath = str_replace(DIRECTORY_SEPARATOR, '\\', $relativePath);
         $relativePath = preg_replace('/\.php$/', '', $relativePath);
 
@@ -142,6 +142,6 @@ class TabDiscovery
             return null;
         }
 
-        return rtrim($this->namespace, '\\') . '\\' . ltrim($relativePath, '\\');
+        return rtrim($this->namespace, '\\').'\\'.ltrim($relativePath, '\\');
     }
 }

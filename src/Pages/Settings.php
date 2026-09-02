@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Islamv\FilamentSettingsPlugin\Pages;
 
 use Filament\Actions\Action;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Filament\Schemas\Components\Actions as SchemaActions;
@@ -113,25 +111,25 @@ class Settings extends Page
                         // content is ['ar' => '...', 'en' => '...']
                         $content = $subSettings['content'] ?? [];
                         foreach ($content as $locale => $value) {
-                            $formData[$tab->getKey() . '__' . $subTab->getKey() . '__content.' . $locale] = $value;
+                            $formData[$tab->getKey().'__'.$subTab->getKey().'__content.'.$locale] = $value;
                         }
                         // Also fill empty slots for configured locales
                         foreach ($subTab->getLocales() as $locale => $_) {
-                            $stateKey = $tab->getKey() . '__' . $subTab->getKey() . '__content.' . $locale;
+                            $stateKey = $tab->getKey().'__'.$subTab->getKey().'__content.'.$locale;
                             if (! isset($formData[$stateKey])) {
                                 $formData[$stateKey] = '';
                             }
                         }
                     } else {
                         foreach ($subSettings as $key => $value) {
-                            $formData[$tab->getKey() . '__' . $subTab->getKey() . '__' . $key] = $value;
+                            $formData[$tab->getKey().'__'.$subTab->getKey().'__'.$key] = $value;
                         }
                     }
                 }
             } else {
                 $tabSettings = $tab->loadSettings();
                 foreach ($tabSettings as $key => $value) {
-                    $formData[$tab->getKey() . '__' . $key] = $value;
+                    $formData[$tab->getKey().'__'.$key] = $value;
                 }
             }
         }
@@ -186,15 +184,15 @@ class Settings extends Page
 
         if ($tab->hasSubTabs()) {
             $filamentTab->schema([
-                Tabs::make($tab->getKey() . '__subtabs')
+                Tabs::make($tab->getKey().'__subtabs')
                     ->persistTabInQueryString('subtab')
                     ->tabs($this->buildSubTabs($tab)),
             ]);
         } else {
             // Scope the field names with the tab key prefix via statePath
             $schema = $tab->schema();
-            $schema = $this->prefixFieldNames($schema, $tab->getKey() . '__');
-            $schema[] = $this->makeSaveAction('save_' . $tab->getKey(), fn () => $this->saveMainTab($tab));
+            $schema = $this->prefixFieldNames($schema, $tab->getKey().'__');
+            $schema[] = $this->makeSaveAction('save_'.$tab->getKey(), fn () => $this->saveMainTab($tab));
             $filamentTab->schema($schema);
         }
 
@@ -225,15 +223,15 @@ class Settings extends Page
         if ($subTab->isTranslatable() && $subTab->hasLocales()) {
             // Render locale tabs
             $filamentTab->schema([
-                Tabs::make($parentTab->getKey() . '__' . $subTab->getKey() . '__locales')
+                Tabs::make($parentTab->getKey().'__'.$subTab->getKey().'__locales')
                     ->persistTabInQueryString('locale')
                     ->tabs($this->buildLocaleTabs($parentTab, $subTab)),
             ]);
         } else {
-            $prefix = $parentTab->getKey() . '__' . $subTab->getKey() . '__';
+            $prefix = $parentTab->getKey().'__'.$subTab->getKey().'__';
             $schema = $this->prefixFieldNames($subTab->schema(), $prefix);
             $schema[] = $this->makeSaveAction(
-                'save_' . $parentTab->getKey() . '_' . $subTab->getKey(),
+                'save_'.$parentTab->getKey().'_'.$subTab->getKey(),
                 fn () => $this->saveSubTab($parentTab, $subTab)
             );
             $filamentTab->schema($schema);
@@ -248,7 +246,7 @@ class Settings extends Page
         $tabs = [];
 
         foreach ($subTab->getLocales() as $localeCode => $localeConfig) {
-            $label     = is_array($localeConfig) ? ($localeConfig['label'] ?? $localeCode) : $localeConfig;
+            $label = is_array($localeConfig) ? ($localeConfig['label'] ?? $localeCode) : $localeConfig;
             $direction = is_array($localeConfig) ? ($localeConfig['direction'] ?? 'ltr') : 'ltr';
 
             // For each locale, clone the schema with locale-specific field names
@@ -268,8 +266,6 @@ class Settings extends Page
     /**
      * Build schema for one locale within a translatable sub-tab.
      * Maps field 'content' → state key 'parentKey__subTabKey__content.{locale}'
-     *
-     * @return array
      */
     protected function buildLocaleSchema(
         SettingsTab $parentTab,
@@ -277,7 +273,7 @@ class Settings extends Page
         string $locale,
         string $direction
     ): array {
-        $stateKey = $parentTab->getKey() . '__' . $subTab->getKey() . '__content.' . $locale;
+        $stateKey = $parentTab->getKey().'__'.$subTab->getKey().'__content.'.$locale;
 
         // Build a locale-specific rich editor bound to the correct state key
         $schema = [];
@@ -296,7 +292,7 @@ class Settings extends Page
 
         // Save action that saves only this locale
         $schema[] = $this->makeSaveAction(
-            'save_' . $parentTab->getKey() . '_' . $subTab->getKey() . '_' . $locale,
+            'save_'.$parentTab->getKey().'_'.$subTab->getKey().'_'.$locale,
             fn () => $this->saveLocale($parentTab, $subTab, $locale)
         );
 
@@ -318,9 +314,9 @@ class Settings extends Page
             return;
         }
 
-        $state  = $this->form->getState();
-        $prefix = $tab->getKey() . '__';
-        $data   = $this->extractPrefixedData($state, $prefix);
+        $state = $this->form->getState();
+        $prefix = $tab->getKey().'__';
+        $data = $this->extractPrefixedData($state, $prefix);
 
         $tab->saveSettings($data);
 
@@ -338,9 +334,9 @@ class Settings extends Page
             return;
         }
 
-        $state  = $this->form->getState();
-        $prefix = $parentTab->getKey() . '__' . $subTab->getKey() . '__';
-        $data   = $this->extractPrefixedData($state, $prefix);
+        $state = $this->form->getState();
+        $prefix = $parentTab->getKey().'__'.$subTab->getKey().'__';
+        $data = $this->extractPrefixedData($state, $prefix);
 
         $subTab->saveSettings($data);
 
@@ -359,12 +355,12 @@ class Settings extends Page
             return;
         }
 
-        $state    = $this->form->getState();
-        $stateKey = $parentTab->getKey() . '__' . $subTab->getKey() . '__content.' . $locale;
+        $state = $this->form->getState();
+        $stateKey = $parentTab->getKey().'__'.$subTab->getKey().'__content.'.$locale;
 
         // Get current content from settings
         $currentSettings = $subTab->loadSettings();
-        $content         = $currentSettings['content'] ?? [];
+        $content = $currentSettings['content'] ?? [];
 
         // Update only this locale
         $content[$locale] = $state[$stateKey] ?? '';
@@ -405,7 +401,7 @@ class Settings extends Page
             if (is_object($field) && method_exists($field, 'name') && method_exists($field, 'getName')) {
                 $originalName = $field->getName();
                 if ($originalName && ! str_contains($originalName, '__')) {
-                    return $field->name($prefix . $originalName);
+                    return $field->name($prefix.$originalName);
                 }
             }
 

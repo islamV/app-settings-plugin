@@ -38,7 +38,7 @@ class FilamentSettingsServiceProvider extends PackageServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../stubs' => base_path('stubs/filament-settings'),
+                __DIR__.'/../stubs' => base_path('stubs/filament-settings'),
             ], 'filament-settings-stubs');
         }
     }

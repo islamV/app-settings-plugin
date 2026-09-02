@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Islamv\FilamentSettingsPlugin\Concerns;
 
+use Islamv\FilamentSettingsPlugin\FilamentSettingsPlugin;
+
 /**
  * Adds locale configuration support to tabs and sub-tabs.
  *
@@ -44,7 +46,7 @@ trait HasLocales
 
         // Fall back to plugin-level locales
         try {
-            $plugin = \Islamv\FilamentSettingsPlugin\FilamentSettingsPlugin::get();
+            $plugin = FilamentSettingsPlugin::get();
 
             return $plugin->getLocales();
         } catch (\Throwable) {
@@ -60,7 +62,7 @@ trait HasLocales
     public function getLocaleLabel(string $code): string
     {
         $locales = $this->getLocales();
-        $locale  = $locales[$code] ?? $code;
+        $locale = $locales[$code] ?? $code;
 
         if (is_array($locale)) {
             return $locale['label'] ?? $code;
@@ -75,7 +77,7 @@ trait HasLocales
     public function getLocaleDirection(string $code): string
     {
         $locales = $this->getLocales();
-        $locale  = $locales[$code] ?? null;
+        $locale = $locales[$code] ?? null;
 
         if (is_array($locale)) {
             return $locale['direction'] ?? 'ltr';

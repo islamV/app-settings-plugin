@@ -34,10 +34,10 @@ class MakeSettingsPageCommand extends Command
             return self::FAILURE;
         }
 
-        $name         = Str::studly($name);
-        $key          = Str::kebab(Str::snake($name));
-        $sort         = (int) ($this->option('sort') ?? 40);
-        $icon         = (string) ($this->option('icon') ?? 'heroicon-o-document-text');
+        $name = Str::studly($name);
+        $key = Str::kebab(Str::snake($name));
+        $sort = (int) ($this->option('sort') ?? 40);
+        $icon = (string) ($this->option('icon') ?? 'heroicon-o-document-text');
         $translatable = ! $this->option('no-translations');
 
         $this->createSubTabClass($name, $key, $sort, $icon, $translatable);
@@ -55,7 +55,7 @@ class MakeSettingsPageCommand extends Command
             "app/Settings/{$name}Settings.php",
         ]);
         $this->info('');
-        $this->components->info('The page will automatically appear under Static Pages → ' . Str::headline($name) . '.');
+        $this->components->info('The page will automatically appear under Static Pages → '.Str::headline($name).'.');
 
         return self::SUCCESS;
     }
@@ -77,7 +77,7 @@ class MakeSettingsPageCommand extends Command
         }
 
         $translatableStr = $translatable ? 'true' : 'false';
-        $settingsClass   = 'App\\Settings\\' . $name . 'Settings';
+        $settingsClass = 'App\\Settings\\'.$name.'Settings';
 
         $stub = <<<PHP
 <?php
@@ -171,7 +171,7 @@ PHP;
             return;
         }
 
-        $group = 'static_pages_' . Str::snake($name);
+        $group = 'static_pages_'.Str::snake($name);
 
         $stub = <<<PHP
 <?php
@@ -207,8 +207,8 @@ PHP;
         }
 
         $timestamp = date('Y_m_d_His');
-        $group     = 'static_pages_' . Str::snake($name);
-        $path      = "{$migrationsDirectory}/{$timestamp}_create_{$group}_settings.php";
+        $group = 'static_pages_'.Str::snake($name);
+        $path = "{$migrationsDirectory}/{$timestamp}_create_{$group}_settings.php";
 
         $stub = <<<PHP
 <?php

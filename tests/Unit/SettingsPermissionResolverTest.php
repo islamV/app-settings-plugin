@@ -68,9 +68,9 @@ class SettingsPermissionResolverTest extends TestCase
         // We cannot easily bind a plugin mock, so we test via config
         config()->set('filament-settings', [
             'navigation' => ['label' => 'Settings', 'icon' => null, 'group' => null, 'sort' => 100],
-            'locales'    => [],
-            'uploads'    => ['disk' => 'public', 'directory' => 'settings'],
-            'discovery'  => ['enabled' => false, 'path' => null, 'namespace' => null],
+            'locales' => [],
+            'uploads' => ['disk' => 'public', 'directory' => 'settings'],
+            'discovery' => ['enabled' => false, 'path' => null, 'namespace' => null],
         ]);
 
         // The resolver will catch the exception from FilamentSettingsPlugin::get() and return true

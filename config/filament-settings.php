@@ -15,9 +15,9 @@ return [
 
     'navigation' => [
         'label' => 'Settings',
-        'icon'  => 'heroicon-o-cog-6-tooth',
+        'icon' => 'heroicon-o-cog-6-tooth',
         'group' => null,
-        'sort'  => 100,
+        'sort' => 100,
     ],
 
     /*
@@ -37,11 +37,11 @@ return [
 
     'locales' => [
         'en' => [
-            'label'     => 'English',
+            'label' => 'English',
             'direction' => 'ltr',
         ],
         'ar' => [
-            'label'     => 'Arabic',
+            'label' => 'Arabic',
             'direction' => 'rtl',
         ],
     ],
@@ -56,7 +56,7 @@ return [
     */
 
     'uploads' => [
-        'disk'      => env('FILAMENT_SETTINGS_DISK', 'public'),
+        'disk' => env('FILAMENT_SETTINGS_DISK', 'public'),
         'directory' => env('FILAMENT_SETTINGS_DIRECTORY', 'settings'),
     ],
 
@@ -75,8 +75,8 @@ return [
     */
 
     'discovery' => [
-        'enabled'   => true,
-        'path'      => null, // null = app/Filament/Settings/Tabs
+        'enabled' => true,
+        'path' => null, // null = app/Filament/Settings/Tabs
         'namespace' => null, // null = App\Filament\Settings\Tabs
     ],
 

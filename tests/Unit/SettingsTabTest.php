@@ -78,7 +78,7 @@ class SettingsTabTest extends TestCase
 
     public function test_tab_sub_tabs_sorted_by_sort(): void
     {
-        $tab  = $this->makeFakeTab('parent');
+        $tab = $this->makeFakeTab('parent');
         $sub1 = $this->makeFakeSubTab('c')->sort(30);
         $sub2 = $this->makeFakeSubTab('a')->sort(10);
         $sub3 = $this->makeFakeSubTab('b')->sort(20);
@@ -140,7 +140,8 @@ class SettingsTabTest extends TestCase
 
     private function makeFakeTab(string $key): SettingsTab
     {
-        return new class($key) extends SettingsTab {
+        return new class($key) extends SettingsTab
+        {
             public function __construct(private readonly string $k)
             {
                 $this->sort = 10;
@@ -165,7 +166,8 @@ class SettingsTabTest extends TestCase
 
     private function makeFakeSubTab(string $key): SettingsSubTab
     {
-        return new class($key) extends SettingsSubTab {
+        return new class($key) extends SettingsSubTab
+        {
             public function __construct(private readonly string $k)
             {
                 $this->sort = 10;

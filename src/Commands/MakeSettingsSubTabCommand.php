@@ -30,7 +30,7 @@ class MakeSettingsSubTabCommand extends Command
             return self::FAILURE;
         }
 
-        $name      = Str::studly($name);
+        $name = Str::studly($name);
         $parentKey = (string) ($this->option('parent') ?? '');
 
         if (empty($parentKey)) {
@@ -60,7 +60,7 @@ class MakeSettingsSubTabCommand extends Command
             "app/Settings/{$name}Settings.php",
         ]);
         $this->info('');
-        $this->components->info('The sub-tab will be automatically discovered under the ' . $parentKey . ' tab.');
+        $this->components->info('The sub-tab will be automatically discovered under the '.$parentKey.' tab.');
 
         return self::SUCCESS;
     }
@@ -81,11 +81,11 @@ class MakeSettingsSubTabCommand extends Command
             return;
         }
 
-        $key          = Str::kebab(Str::snake($name));
-        $sort         = (int) ($this->option('sort') ?? 10);
-        $icon         = (string) ($this->option('icon') ?? 'heroicon-o-square-3-stack-3d');
+        $key = Str::kebab(Str::snake($name));
+        $sort = (int) ($this->option('sort') ?? 10);
+        $icon = (string) ($this->option('icon') ?? 'heroicon-o-square-3-stack-3d');
         $translatable = $this->option('translatable') ? 'true' : 'false';
-        $settingsClass = 'App\\Settings\\' . $name . 'Settings';
+        $settingsClass = 'App\\Settings\\'.$name.'Settings';
 
         $stub = $this->getStub($name, $key, $parentKey, $sort, $icon, $translatable, $settingsClass);
 
@@ -102,16 +102,16 @@ class MakeSettingsSubTabCommand extends Command
             mkdir($settingsDirectory, recursive: true);
         }
 
-        $settingsPath = $settingsDirectory . '/' . $name . 'Settings.php';
+        $settingsPath = $settingsDirectory.'/'.$name.'Settings.php';
 
         if (file_exists($settingsPath)) {
-            $this->components->warn($name . 'Settings.php already exists. Skipping.');
+            $this->components->warn($name.'Settings.php already exists. Skipping.');
 
             return;
         }
 
-        $group = Str::snake($parentKey) . '_' . Str::snake($name);
-        $stub  = <<<PHP
+        $group = Str::snake($parentKey).'_'.Str::snake($name);
+        $stub = <<<PHP
 <?php
 
 declare(strict_types=1);
@@ -146,8 +146,8 @@ PHP;
         }
 
         $timestamp = date('Y_m_d_His');
-        $group     = Str::snake($parentKey) . '_' . Str::snake($name);
-        $path      = $migrationsDirectory . '/' . $timestamp . '_create_' . $group . '_settings.php';
+        $group = Str::snake($parentKey).'_'.Str::snake($name);
+        $path = $migrationsDirectory.'/'.$timestamp.'_create_'.$group.'_settings.php';
 
         $stub = <<<PHP
 <?php

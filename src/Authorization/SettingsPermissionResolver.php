@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Islamv\FilamentSettingsPlugin\Authorization;
 
-use BezhanSalleh\FilamentShield\Facades\FilamentShield;
 use Islamv\FilamentSettingsPlugin\FilamentSettingsPlugin;
 
 /**
@@ -27,7 +26,7 @@ class SettingsPermissionResolver
      */
     public function getTabPermissionKey(string $tabKey): string
     {
-        return 'page_settings_' . str_replace('-', '_', $tabKey);
+        return 'page_settings_'.str_replace('-', '_', $tabKey);
     }
 
     /**
@@ -35,7 +34,7 @@ class SettingsPermissionResolver
      */
     public function getSubTabPermissionKey(string $parentTabKey, string $subTabKey): string
     {
-        return 'page_settings_' . str_replace('-', '_', $parentTabKey) . '_' . str_replace('-', '_', $subTabKey);
+        return 'page_settings_'.str_replace('-', '_', $parentTabKey).'_'.str_replace('-', '_', $subTabKey);
     }
 
     /**
@@ -98,7 +97,7 @@ class SettingsPermissionResolver
      *
      * @param  array<string>  $tabKeys
      * @param  array<string, array<string>>  $subTabKeys  parent => [subtabs]
-     * @return array<string, string>  permission_key => label
+     * @return array<string, string> permission_key => label
      */
     public function getAllPermissionKeys(array $tabKeys, array $subTabKeys = []): array
     {
@@ -107,13 +106,13 @@ class SettingsPermissionResolver
         ];
 
         foreach ($tabKeys as $tabKey) {
-            $permissions[$this->getTabPermissionKey($tabKey)] = 'Settings: ' . ucwords(str_replace('-', ' ', $tabKey));
+            $permissions[$this->getTabPermissionKey($tabKey)] = 'Settings: '.ucwords(str_replace('-', ' ', $tabKey));
         }
 
         foreach ($subTabKeys as $parentKey => $subKeys) {
             foreach ($subKeys as $subKey) {
                 $permissions[$this->getSubTabPermissionKey($parentKey, $subKey)] =
-                    'Settings: ' . ucwords(str_replace('-', ' ', $parentKey)) . ' / ' . ucwords(str_replace('-', ' ', $subKey));
+                    'Settings: '.ucwords(str_replace('-', ' ', $parentKey)).' / '.ucwords(str_replace('-', ' ', $subKey));
             }
         }
 

@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace Islamv\FilamentSettingsPlugin;
 
+use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Closure;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Islamv\FilamentSettingsPlugin\Discovery\TabDiscovery;
 use Islamv\FilamentSettingsPlugin\Pages\Settings;
 use Islamv\FilamentSettingsPlugin\Registry\SettingsRegistry;
+use Islamv\FilamentSettingsPlugin\Tabs\Defaults\GeneralSettingsTab;
+use Islamv\FilamentSettingsPlugin\Tabs\Defaults\SocialLinksTab;
+use Islamv\FilamentSettingsPlugin\Tabs\Defaults\StaticPagesTab;
 use Islamv\FilamentSettingsPlugin\Tabs\SettingsSubTab;
 use Islamv\FilamentSettingsPlugin\Tabs\SettingsTab;
 
@@ -258,18 +262,18 @@ class FilamentSettingsPlugin implements Plugin
     protected function resolveDefaultTabs(): array
     {
         return [
-            app(\Islamv\FilamentSettingsPlugin\Tabs\Defaults\GeneralSettingsTab::class),
-            app(\Islamv\FilamentSettingsPlugin\Tabs\Defaults\SocialLinksTab::class),
-            app(\Islamv\FilamentSettingsPlugin\Tabs\Defaults\StaticPagesTab::class),
+            app(GeneralSettingsTab::class),
+            app(SocialLinksTab::class),
+            app(StaticPagesTab::class),
         ];
     }
 
     protected function assertShieldAvailable(): void
     {
-        if (! class_exists(\BezhanSalleh\FilamentShield\FilamentShieldPlugin::class)) {
+        if (! class_exists(FilamentShieldPlugin::class)) {
             throw new \RuntimeException(
                 'Filament Shield integration is enabled, but bezhansalleh/filament-shield is not installed. '
-                . 'Run: composer require bezhansalleh/filament-shield'
+                .'Run: composer require bezhansalleh/filament-shield'
             );
         }
     }

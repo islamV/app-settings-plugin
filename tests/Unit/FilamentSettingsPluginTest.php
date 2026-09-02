@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Islamv\FilamentSettingsPlugin\Tests\Unit;
 
+use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Islamv\FilamentSettingsPlugin\FilamentSettingsPlugin;
 use Islamv\FilamentSettingsPlugin\Registry\SettingsRegistry;
 use Islamv\FilamentSettingsPlugin\Tabs\SettingsTab;
@@ -64,11 +65,11 @@ class FilamentSettingsPluginTest extends TestCase
         $plugin = FilamentSettingsPlugin::make()->useShield(true);
 
         // Call the private method via reflection
-        $ref    = new \ReflectionMethod($plugin, 'assertShieldAvailable');
+        $ref = new \ReflectionMethod($plugin, 'assertShieldAvailable');
         $ref->setAccessible(true);
 
         // Only throws if shield class doesn't exist — in test env it won't
-        if (! class_exists(\BezhanSalleh\FilamentShield\FilamentShieldPlugin::class)) {
+        if (! class_exists(FilamentShieldPlugin::class)) {
             $ref->invoke($plugin);
         } else {
             $this->markTestSkipped('Shield IS installed, cannot test the exception path.');
@@ -101,7 +102,7 @@ class FilamentSettingsPluginTest extends TestCase
     public function test_can_add_manual_tab(): void
     {
         $plugin = FilamentSettingsPlugin::make()->withoutDefaultTabs();
-        $tab    = $this->makeFakeTab('custom', 10);
+        $tab = $this->makeFakeTab('custom', 10);
 
         $plugin->tab($tab);
 
@@ -131,7 +132,8 @@ class FilamentSettingsPluginTest extends TestCase
 
     private function makeFakeTab(string $key, int $sort): SettingsTab
     {
-        return new class($key, $sort) extends SettingsTab {
+        return new class($key, $sort) extends SettingsTab
+        {
             public function __construct(
                 private readonly string $k,
                 private readonly int $s,

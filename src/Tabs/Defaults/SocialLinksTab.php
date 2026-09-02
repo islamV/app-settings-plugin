@@ -67,18 +67,18 @@ class SocialLinksTab extends SettingsTab
     protected function getPlatformOptions(): array
     {
         return [
-            'facebook'  => 'Facebook',
+            'facebook' => 'Facebook',
             'instagram' => 'Instagram',
-            'whatsapp'  => 'WhatsApp',
-            'x'         => 'X (Twitter)',
-            'tiktok'    => 'TikTok',
-            'youtube'   => 'YouTube',
-            'linkedin'  => 'LinkedIn',
-            'telegram'  => 'Telegram',
-            'snapchat'  => 'Snapchat',
+            'whatsapp' => 'WhatsApp',
+            'x' => 'X (Twitter)',
+            'tiktok' => 'TikTok',
+            'youtube' => 'YouTube',
+            'linkedin' => 'LinkedIn',
+            'telegram' => 'Telegram',
+            'snapchat' => 'Snapchat',
             'pinterest' => 'Pinterest',
-            'threads'   => 'Threads',
-            'discord'   => 'Discord',
+            'threads' => 'Threads',
+            'discord' => 'Discord',
         ];
     }
 }
