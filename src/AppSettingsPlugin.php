@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Islamv\FilamentSettingsPlugin;
+namespace Islamv\AppSettingsPlugin;
 
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Closure;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-use Islamv\FilamentSettingsPlugin\Discovery\TabDiscovery;
-use Islamv\FilamentSettingsPlugin\Pages\Settings;
-use Islamv\FilamentSettingsPlugin\Registry\SettingsRegistry;
-use Islamv\FilamentSettingsPlugin\Tabs\Defaults\GeneralSettingsTab;
-use Islamv\FilamentSettingsPlugin\Tabs\Defaults\SocialLinksTab;
-use Islamv\FilamentSettingsPlugin\Tabs\Defaults\StaticPagesTab;
-use Islamv\FilamentSettingsPlugin\Tabs\SettingsSubTab;
-use Islamv\FilamentSettingsPlugin\Tabs\SettingsTab;
+use Islamv\AppSettingsPlugin\Discovery\TabDiscovery;
+use Islamv\AppSettingsPlugin\Pages\Settings;
+use Islamv\AppSettingsPlugin\Registry\SettingsRegistry;
+use Islamv\AppSettingsPlugin\Tabs\Defaults\GeneralSettingsTab;
+use Islamv\AppSettingsPlugin\Tabs\Defaults\SocialLinksTab;
+use Islamv\AppSettingsPlugin\Tabs\Defaults\StaticPagesTab;
+use Islamv\AppSettingsPlugin\Tabs\SettingsSubTab;
+use Islamv\AppSettingsPlugin\Tabs\SettingsTab;
 
-class FilamentSettingsPlugin implements Plugin
+class AppSettingsPlugin implements Plugin
 {
     protected bool $useShield = false;
 
@@ -49,7 +49,7 @@ class FilamentSettingsPlugin implements Plugin
 
     public function getId(): string
     {
-        return 'filament-settings';
+        return 'app-settings';
     }
 
     public function register(Panel $panel): void
@@ -185,7 +185,7 @@ class FilamentSettingsPlugin implements Plugin
         }
 
         /** @var array<string, mixed> */
-        $configLocales = config('filament-settings.locales', []);
+        $configLocales = config('app-settings.locales', []);
 
         return $configLocales;
     }

@@ -1,8 +1,8 @@
-# Filament Settings Plugin
+# App Settings Plugin
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/islamv/filament-settings-plugin.svg?style=flat-square)](https://packagist.org/packages/islamv/filament-settings-plugin)
-[![Total Downloads](https://img.shields.io/packagist/dt/islamv/filament-settings-plugin.svg?style=flat-square)](https://packagist.org/packages/islamv/filament-settings-plugin)
-[![License](https://img.shields.io/packagist/l/islamv/filament-settings-plugin.svg?style=flat-square)](LICENSE.md)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/islamv/app-settings-plugin.svg?style=flat-square)](https://packagist.org/packages/islamv/app-settings-plugin)
+[![Total Downloads](https://img.shields.io/packagist/dt/islamv/app-settings-plugin.svg?style=flat-square)](https://packagist.org/packages/islamv/app-settings-plugin)
+[![License](https://img.shields.io/packagist/l/islamv/app-settings-plugin.svg?style=flat-square)](LICENSE.md)
 
 A production-ready, highly architecture-focused reusable Filament Settings plugin powered by `spatie/laravel-settings`. Built specifically for modern Filament v5 and Laravel applications.
 
@@ -27,14 +27,14 @@ A production-ready, highly architecture-focused reusable Filament Settings plugi
 You can install the package via composer (`spatie/laravel-settings` will be automatically installed as a dependency):
 
 ```bash
-composer require islamv/filament-settings-plugin
+composer require islamv/app-settings-plugin
 ```
 
 Publish and run the Spatie Settings & Plugin migrations:
 
 ```bash
 php artisan vendor:publish --provider="Spatie\LaravelSettings\LaravelSettingsServiceProvider"
-php artisan vendor:publish --provider="Islamv\FilamentSettingsPlugin\FilamentSettingsServiceProvider"
+php artisan vendor:publish --provider="Islamv\AppSettingsPlugin\AppSettingsServiceProvider"
 php artisan migrate
 ```
 
@@ -42,17 +42,17 @@ php artisan migrate
 
 ## Registration in Panel
 
-Register `FilamentSettingsPlugin` in your Filament Panel Provider (e.g. `AdminPanelProvider.php`):
+Register `AppSettingsPlugin` in your Filament Panel Provider (e.g. `AdminPanelProvider.php`):
 
 ```php
-use Islamv\FilamentSettingsPlugin\FilamentSettingsPlugin;
+use Islamv\AppSettingsPlugin\AppSettingsPlugin;
 
 public function panel(Panel $panel): Panel
 {
     return $panel
         // ...
         ->plugins([
-            FilamentSettingsPlugin::make(),
+            AppSettingsPlugin::make(),
         ]);
 }
 ```
@@ -61,7 +61,7 @@ public function panel(Panel $panel): Panel
 
 ## Configuration
 
-The plugin configuration file `config/filament-settings.php` allows you to customize navigation, locales, file upload disk, and discovery behavior:
+The plugin configuration file `config/app-settings.php` allows you to customize navigation, locales, file upload disk, and discovery behavior:
 
 ```php
 return [
@@ -78,8 +78,8 @@ return [
     ],
 
     'uploads' => [
-        'disk'      => env('FILAMENT_SETTINGS_DISK', 'public'),
-        'directory' => env('FILAMENT_SETTINGS_DIRECTORY', 'settings'),
+        'disk'      => env('APP_SETTINGS_DISK', 'public'),
+        'directory' => env('APP_SETTINGS_DIRECTORY', 'settings'),
     ],
 
     'discovery' => [
@@ -99,7 +99,7 @@ return [
 In your `PanelProvider`:
 
 ```php
-FilamentSettingsPlugin::make()
+AppSettingsPlugin::make()
     ->useShield(true) // Enable Filament Shield permission checks
     ->withoutDefaultTabs() // Disable built-in General, Social, Static Pages tabs
     ->removeTab('social-links') // Remove a specific tab
@@ -168,7 +168,7 @@ When Shield integration is enabled (`->useShield(true)`), permission keys follow
 External packages can register settings tabs in their ServiceProvider `boot()` method:
 
 ```php
-use Islamv\FilamentSettingsPlugin\Registry\SettingsRegistry;
+use Islamv\AppSettingsPlugin\Registry\SettingsRegistry;
 
 public function boot(): void
 {

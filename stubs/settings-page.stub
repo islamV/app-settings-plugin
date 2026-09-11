@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace {{ namespace }};
 
 use Filament\Forms\Components\RichEditor;
-use Islamv\FilamentSettingsPlugin\Tabs\SettingsSubTab;
+use Islamv\AppSettingsPlugin\Tabs\SettingsSubTab;
 use {{ settingsClass }};
 
 class {{ class }} extends SettingsSubTab
@@ -44,7 +44,7 @@ class {{ class }} extends SettingsSubTab
         return [
             RichEditor::make('content')
                 ->label('Content')
-                ->fileAttachmentsDisk(config('filament-settings.uploads.disk', 'public'))
+                ->fileAttachmentsDisk(config('app-settings.uploads.disk', 'public'))
                 ->fileAttachmentsVisibility('public')
                 ->columnSpanFull(),
         ];

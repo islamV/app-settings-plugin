@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Islamv\FilamentSettingsPlugin;
+namespace Islamv\AppSettingsPlugin;
 
-use Islamv\FilamentSettingsPlugin\Commands\MakeSettingsPageCommand;
-use Islamv\FilamentSettingsPlugin\Commands\MakeSettingsSubTabCommand;
-use Islamv\FilamentSettingsPlugin\Commands\MakeSettingsTabCommand;
-use Islamv\FilamentSettingsPlugin\Registry\SettingsRegistry;
+use Islamv\AppSettingsPlugin\Commands\MakeSettingsPageCommand;
+use Islamv\AppSettingsPlugin\Commands\MakeSettingsSubTabCommand;
+use Islamv\AppSettingsPlugin\Commands\MakeSettingsTabCommand;
+use Islamv\AppSettingsPlugin\Registry\SettingsRegistry;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class FilamentSettingsServiceProvider extends PackageServiceProvider
+class AppSettingsServiceProvider extends PackageServiceProvider
 {
-    public static string $name = 'filament-settings';
+    public static string $name = 'app-settings';
 
     public function configurePackage(Package $package): void
     {
         $package
             ->name(static::$name)
-            ->hasConfigFile('filament-settings')
+            ->hasConfigFile('app-settings')
             ->hasTranslations()
             ->hasViews()
             ->hasCommands([
@@ -38,8 +38,8 @@ class FilamentSettingsServiceProvider extends PackageServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../stubs' => base_path('stubs/filament-settings'),
-            ], 'filament-settings-stubs');
+                __DIR__.'/../stubs' => base_path('stubs/app-settings'),
+            ], 'app-settings-stubs');
         }
     }
 }

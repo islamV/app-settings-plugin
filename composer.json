@@ -1,6 +1,6 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "islamv/filament-settings-plugin",
+    "name": "islamv/app-settings-plugin",
     "description": "A reusable, extensible Filament Settings plugin with tabbed UI, Spatie Settings persistence, Artisan generators, automatic discovery, and optional Shield integration.",
     "type": "library",
     "license": "MIT",
@@ -39,18 +39,18 @@
     },
     "autoload": {
         "psr-4": {
-            "Islamv\\FilamentSettingsPlugin\\": "src/"
+            "Islamv\\AppSettingsPlugin\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Islamv\\FilamentSettingsPlugin\\Tests\\": "tests/"
+            "Islamv\\AppSettingsPlugin\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Islamv\\FilamentSettingsPlugin\\FilamentSettingsServiceProvider"
+                "Islamv\\AppSettingsPlugin\\AppSettingsServiceProvider"
             ]
         }
     },

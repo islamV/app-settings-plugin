@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Islamv\FilamentSettingsPlugin\Registry;
+namespace Islamv\AppSettingsPlugin\Registry;
 
 use Closure;
-use Islamv\FilamentSettingsPlugin\Tabs\SettingsSubTab;
-use Islamv\FilamentSettingsPlugin\Tabs\SettingsTab;
+use Islamv\AppSettingsPlugin\Tabs\SettingsSubTab;
+use Islamv\AppSettingsPlugin\Tabs\SettingsTab;
 
 /**
  * Central registry that accumulates all tabs and sub-tabs from:

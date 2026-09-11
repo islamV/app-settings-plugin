@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Islamv\FilamentSettingsPlugin\Tabs\Defaults;
+namespace Islamv\AppSettingsPlugin\Tabs\Defaults;
 
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Support\Icons\Heroicon;
-use Islamv\FilamentSettingsPlugin\Settings\SocialLinksSettings;
-use Islamv\FilamentSettingsPlugin\Tabs\SettingsTab;
+use Islamv\AppSettingsPlugin\Settings\SocialLinksSettings;
+use Islamv\AppSettingsPlugin\Tabs\SettingsTab;
 
 class SocialLinksTab extends SettingsTab
 {
@@ -22,7 +22,7 @@ class SocialLinksTab extends SettingsTab
 
     public function getLabel(): string
     {
-        return __('filament-settings::tabs.social_links.label');
+        return __('app-settings::tabs.social_links.label');
     }
 
     public function getIcon(): string|\BackedEnum
@@ -39,17 +39,17 @@ class SocialLinksTab extends SettingsTab
     {
         return [
             Repeater::make('links')
-                ->label(__('filament-settings::tabs.social_links.fields.links'))
-                ->addActionLabel(__('filament-settings::tabs.social_links.add_link'))
+                ->label(__('app-settings::tabs.social_links.fields.links'))
+                ->addActionLabel(__('app-settings::tabs.social_links.add_link'))
                 ->schema([
                     Select::make('name')
-                        ->label(__('filament-settings::tabs.social_links.fields.name'))
+                        ->label(__('app-settings::tabs.social_links.fields.name'))
                         ->options($this->getPlatformOptions())
                         ->searchable()
                         ->required(),
 
                     TextInput::make('url')
-                        ->label(__('filament-settings::tabs.social_links.fields.url'))
+                        ->label(__('app-settings::tabs.social_links.fields.url'))
                         ->url()
                         ->required()
                         ->maxLength(2048),

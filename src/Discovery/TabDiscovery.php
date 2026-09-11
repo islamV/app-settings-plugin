@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Islamv\FilamentSettingsPlugin\Discovery;
+namespace Islamv\AppSettingsPlugin\Discovery;
 
-use Islamv\FilamentSettingsPlugin\Tabs\SettingsSubTab;
-use Islamv\FilamentSettingsPlugin\Tabs\SettingsTab;
+use Islamv\AppSettingsPlugin\Tabs\SettingsSubTab;
+use Islamv\AppSettingsPlugin\Tabs\SettingsTab;
 use Symfony\Component\Finder\Finder;
 
 /**

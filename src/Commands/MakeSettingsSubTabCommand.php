@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Islamv\FilamentSettingsPlugin\Commands;
+namespace Islamv\AppSettingsPlugin\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
@@ -192,7 +192,7 @@ declare(strict_types=1);
 namespace App\Filament\Settings\Tabs\\{$parentDir};
 
 use Filament\Forms\Components\TextInput;
-use Islamv\FilamentSettingsPlugin\Tabs\SettingsSubTab;
+use Islamv\AppSettingsPlugin\Tabs\SettingsSubTab;
 use {$settingsClass};
 
 class {$name}SettingsSubTab extends SettingsSubTab

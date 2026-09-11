@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Islamv\FilamentSettingsPlugin\Tests\Unit;
+namespace Islamv\AppSettingsPlugin\Tests\Unit;
 
-use Islamv\FilamentSettingsPlugin\Tabs\SettingsSubTab;
-use Islamv\FilamentSettingsPlugin\Tabs\SettingsTab;
-use Islamv\FilamentSettingsPlugin\Tests\TestCase;
+use Islamv\AppSettingsPlugin\Tabs\SettingsSubTab;
+use Islamv\AppSettingsPlugin\Tabs\SettingsTab;
+use Islamv\AppSettingsPlugin\Tests\TestCase;
 
 class SettingsTabTest extends TestCase
 {
@@ -121,7 +121,7 @@ class SettingsTabTest extends TestCase
 
     public function test_locales_returned_from_config_when_not_set(): void
     {
-        config()->set('filament-settings.locales', [
+        config()->set('app-settings.locales', [
             'en' => ['label' => 'English', 'direction' => 'ltr'],
             'ar' => ['label' => 'Arabic',  'direction' => 'rtl'],
         ]);

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Islamv\FilamentSettingsPlugin\Tests\Unit;
+namespace Islamv\AppSettingsPlugin\Tests\Unit;
 
-use Islamv\FilamentSettingsPlugin\Authorization\SettingsPermissionResolver;
-use Islamv\FilamentSettingsPlugin\Tests\TestCase;
+use Islamv\AppSettingsPlugin\Authorization\SettingsPermissionResolver;
+use Islamv\AppSettingsPlugin\Tests\TestCase;
 
 class SettingsPermissionResolverTest extends TestCase
 {
@@ -66,14 +66,14 @@ class SettingsPermissionResolverTest extends TestCase
     {
         // When Shield is NOT enabled, canAccess returns true
         // We cannot easily bind a plugin mock, so we test via config
-        config()->set('filament-settings', [
+        config()->set('app-settings', [
             'navigation' => ['label' => 'Settings', 'icon' => null, 'group' => null, 'sort' => 100],
             'locales' => [],
             'uploads' => ['disk' => 'public', 'directory' => 'settings'],
             'discovery' => ['enabled' => false, 'path' => null, 'namespace' => null],
         ]);
 
-        // The resolver will catch the exception from FilamentSettingsPlugin::get() and return true
+        // The resolver will catch the exception from AppSettingsPlugin::get() and return true
         $result = $this->resolver->canAccessSettingsPage();
 
         $this->assertTrue($result);

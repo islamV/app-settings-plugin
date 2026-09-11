@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Islamv\FilamentSettingsPlugin\Tests\Unit;
+namespace Islamv\AppSettingsPlugin\Tests\Unit;
 
-use Islamv\FilamentSettingsPlugin\Registry\SettingsRegistry;
-use Islamv\FilamentSettingsPlugin\Tabs\SettingsSubTab;
-use Islamv\FilamentSettingsPlugin\Tabs\SettingsTab;
-use Islamv\FilamentSettingsPlugin\Tests\TestCase;
+use Islamv\AppSettingsPlugin\Registry\SettingsRegistry;
+use Islamv\AppSettingsPlugin\Tabs\SettingsSubTab;
+use Islamv\AppSettingsPlugin\Tabs\SettingsTab;
+use Islamv\AppSettingsPlugin\Tests\TestCase;
 
 class SettingsRegistryTest extends TestCase
 {

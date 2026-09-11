@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Islamv\FilamentSettingsPlugin\Tabs;
+namespace Islamv\AppSettingsPlugin\Tabs;
 
 use Closure;
 use Illuminate\Contracts\Support\Htmlable;
-use Islamv\FilamentSettingsPlugin\Concerns\HasLocales;
-use Islamv\FilamentSettingsPlugin\Concerns\HasSort;
+use Islamv\AppSettingsPlugin\Concerns\HasLocales;
+use Islamv\AppSettingsPlugin\Concerns\HasSort;
 use Spatie\LaravelSettings\Settings;
 
 /**

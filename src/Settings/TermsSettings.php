@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Islamv\FilamentSettingsPlugin\Settings;
+namespace Islamv\AppSettingsPlugin\Settings;
 
 use Spatie\LaravelSettings\Settings;
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Islamv\FilamentSettingsPlugin\Pages;
+namespace Islamv\AppSettingsPlugin\Pages;
 
 use Filament\Actions\Action;
 use Filament\Notifications\Notification;
@@ -12,10 +12,10 @@ use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
-use Islamv\FilamentSettingsPlugin\Authorization\SettingsPermissionResolver;
-use Islamv\FilamentSettingsPlugin\Registry\SettingsRegistry;
-use Islamv\FilamentSettingsPlugin\Tabs\SettingsSubTab;
-use Islamv\FilamentSettingsPlugin\Tabs\SettingsTab;
+use Islamv\AppSettingsPlugin\Authorization\SettingsPermissionResolver;
+use Islamv\AppSettingsPlugin\Registry\SettingsRegistry;
+use Islamv\AppSettingsPlugin\Tabs\SettingsSubTab;
+use Islamv\AppSettingsPlugin\Tabs\SettingsTab;
 
 /**
  * The single Settings Filament Page.
@@ -43,19 +43,19 @@ class Settings extends Page
     public static function getNavigationLabel(): string
     {
         /** @var string */
-        return config('filament-settings.navigation.label', __('filament-settings::navigation.label'));
+        return config('app-settings.navigation.label', __('app-settings::navigation.label'));
     }
 
     public static function getNavigationGroup(): ?string
     {
         /** @var string|null */
-        return config('filament-settings.navigation.group');
+        return config('app-settings.navigation.group');
     }
 
     public static function getNavigationSort(): ?int
     {
         /** @var int */
-        return (int) config('filament-settings.navigation.sort', 100);
+        return (int) config('app-settings.navigation.sort', 100);
     }
 
     public static function getNavigationIcon(): string|\BackedEnum|null
@@ -65,12 +65,12 @@ class Settings extends Page
 
     public function getTitle(): string
     {
-        return __('filament-settings::navigation.title');
+        return __('app-settings::navigation.title');
     }
 
     public function getHeading(): string
     {
-        return __('filament-settings::navigation.title');
+        return __('app-settings::navigation.title');
     }
 
     // ─────────────────────────────────────────
@@ -432,7 +432,7 @@ class Settings extends Page
     {
         return SchemaActions::make([
             Action::make($name)
-                ->label(__('filament-settings::actions.save'))
+                ->label(__('app-settings::actions.save'))
                 ->action($action),
         ]);
     }
@@ -441,7 +441,7 @@ class Settings extends Page
     {
         Notification::make()
             ->success()
-            ->title(__('filament-settings::notifications.saved'))
+            ->title(__('app-settings::notifications.saved'))
             ->send();
     }
 
@@ -449,7 +449,7 @@ class Settings extends Page
     {
         Notification::make()
             ->danger()
-            ->title(__('filament-settings::notifications.unauthorized'))
+            ->title(__('app-settings::notifications.unauthorized'))
             ->send();
     }
 }

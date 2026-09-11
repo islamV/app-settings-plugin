@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Islamv\FilamentSettingsPlugin\Concerns;
+namespace Islamv\AppSettingsPlugin\Concerns;
 
-use Islamv\FilamentSettingsPlugin\FilamentSettingsPlugin;
+use Islamv\AppSettingsPlugin\AppSettingsPlugin;
 
 /**
  * Adds locale configuration support to tabs and sub-tabs.
@@ -46,13 +46,13 @@ trait HasLocales
 
         // Fall back to plugin-level locales
         try {
-            $plugin = FilamentSettingsPlugin::get();
+            $plugin = AppSettingsPlugin::get();
 
             return $plugin->getLocales();
         } catch (\Throwable) {
             // Plugin not registered yet (e.g., during tests or early boot)
             /** @var array<string, mixed> */
-            return config('filament-settings.locales', []);
+            return config('app-settings.locales', []);
         }
     }
 

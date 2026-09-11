@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Islamv\FilamentSettingsPlugin\Contracts;
+namespace Islamv\AppSettingsPlugin\Contracts;
 
 /**
  * Implement this interface on a ServiceProvider to register tabs
@@ -12,7 +12,7 @@ namespace Islamv\FilamentSettingsPlugin\Contracts;
  *
  *   public function boot(): void
  *   {
- *       $registry = app(\Islamv\FilamentSettingsPlugin\Registry\SettingsRegistry::class);
+ *       $registry = app(\Islamv\AppSettingsPlugin\Registry\SettingsRegistry::class);
  *       $registry->register(PaymentSettingsTab::make());
  *   }
  */

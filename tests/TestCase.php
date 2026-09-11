@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Islamv\FilamentSettingsPlugin\Tests;
+namespace Islamv\AppSettingsPlugin\Tests;
 
 use Filament\FilamentServiceProvider;
-use Islamv\FilamentSettingsPlugin\FilamentSettingsServiceProvider;
+use Islamv\AppSettingsPlugin\AppSettingsServiceProvider;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Spatie\LaravelSettings\LaravelSettingsServiceProvider;
@@ -23,7 +23,7 @@ class TestCase extends OrchestraTestCase
             LivewireServiceProvider::class,
             FilamentServiceProvider::class,
             LaravelSettingsServiceProvider::class,
-            FilamentSettingsServiceProvider::class,
+            AppSettingsServiceProvider::class,
         ];
     }
 
@@ -37,7 +37,7 @@ class TestCase extends OrchestraTestCase
             'prefix' => '',
         ]);
 
-        $app['config']->set('filament-settings.locales', [
+        $app['config']->set('app-settings.locales', [
             'en' => ['label' => 'English', 'direction' => 'ltr'],
             'ar' => ['label' => 'Arabic',  'direction' => 'rtl'],
         ]);

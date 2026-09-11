@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Islamv\FilamentSettingsPlugin\Tabs\Defaults;
+namespace Islamv\AppSettingsPlugin\Tabs\Defaults;
 
 use Filament\Support\Icons\Heroicon;
-use Islamv\FilamentSettingsPlugin\StaticPages\AboutSubTab;
-use Islamv\FilamentSettingsPlugin\StaticPages\PrivacyPolicySubTab;
-use Islamv\FilamentSettingsPlugin\StaticPages\TermsSubTab;
-use Islamv\FilamentSettingsPlugin\Tabs\SettingsTab;
+use Islamv\AppSettingsPlugin\StaticPages\AboutSubTab;
+use Islamv\AppSettingsPlugin\StaticPages\PrivacyPolicySubTab;
+use Islamv\AppSettingsPlugin\StaticPages\TermsSubTab;
+use Islamv\AppSettingsPlugin\Tabs\SettingsTab;
 
 /**
  * Static Pages main tab.
@@ -36,7 +36,7 @@ class StaticPagesTab extends SettingsTab
 
     public function getLabel(): string
     {
-        return __('filament-settings::tabs.static_pages.label');
+        return __('app-settings::tabs.static_pages.label');
     }
 
     public function getIcon(): string|\BackedEnum

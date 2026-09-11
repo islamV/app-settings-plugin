@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Islamv\FilamentSettingsPlugin\Commands;
+namespace Islamv\AppSettingsPlugin\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
@@ -87,7 +87,7 @@ declare(strict_types=1);
 namespace App\Filament\Settings\Tabs\StaticPages;
 
 use Filament\Forms\Components\RichEditor;
-use Islamv\FilamentSettingsPlugin\Tabs\SettingsSubTab;
+use Islamv\AppSettingsPlugin\Tabs\SettingsSubTab;
 use {$settingsClass};
 
 class {$name}SubTab extends SettingsSubTab
@@ -126,7 +126,7 @@ class {$name}SubTab extends SettingsSubTab
         return [
             RichEditor::make('content')
                 ->label('Content')
-                ->fileAttachmentsDisk(config('filament-settings.uploads.disk', 'public'))
+                ->fileAttachmentsDisk(config('app-settings.uploads.disk', 'public'))
                 ->fileAttachmentsVisibility('public')
                 ->columnSpanFull(),
         ];

@@ -56,8 +56,8 @@ return [
     */
 
     'uploads' => [
-        'disk' => env('FILAMENT_SETTINGS_DISK', 'public'),
-        'directory' => env('FILAMENT_SETTINGS_DIRECTORY', 'settings'),
+        'disk' => env('APP_SETTINGS_DISK', env('FILAMENT_SETTINGS_DISK', 'public')),
+        'directory' => env('APP_SETTINGS_DIRECTORY', env('FILAMENT_SETTINGS_DIRECTORY', 'settings')),
     ],
 
     /*

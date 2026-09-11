@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Islamv\FilamentSettingsPlugin\StaticPages;
+namespace Islamv\AppSettingsPlugin\StaticPages;
 
 use Filament\Forms\Components\RichEditor;
 use Filament\Support\Icons\Heroicon;
-use Islamv\FilamentSettingsPlugin\Settings\PrivacyPolicySettings;
-use Islamv\FilamentSettingsPlugin\Tabs\SettingsSubTab;
+use Islamv\AppSettingsPlugin\Settings\PrivacyPolicySettings;
+use Islamv\AppSettingsPlugin\Tabs\SettingsSubTab;
 
 class PrivacyPolicySubTab extends SettingsSubTab
 {
@@ -22,7 +22,7 @@ class PrivacyPolicySubTab extends SettingsSubTab
 
     public function getLabel(): string
     {
-        return __('filament-settings::tabs.static_pages.privacy_policy');
+        return __('app-settings::tabs.static_pages.privacy_policy');
     }
 
     public function getIcon(): string|\BackedEnum
@@ -48,8 +48,8 @@ class PrivacyPolicySubTab extends SettingsSubTab
     {
         return [
             RichEditor::make('content')
-                ->label(__('filament-settings::tabs.static_pages.content'))
-                ->fileAttachmentsDisk(config('filament-settings.uploads.disk', 'public'))
+                ->label(__('app-settings::tabs.static_pages.content'))
+                ->fileAttachmentsDisk(config('app-settings.uploads.disk', 'public'))
                 ->fileAttachmentsVisibility('public')
                 ->columnSpanFull(),
         ];

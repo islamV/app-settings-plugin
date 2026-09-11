@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Islamv\FilamentSettingsPlugin\Authorization;
+namespace Islamv\AppSettingsPlugin\Authorization;
 
-use Islamv\FilamentSettingsPlugin\FilamentSettingsPlugin;
+use Islamv\AppSettingsPlugin\AppSettingsPlugin;
 
 /**
  * Centralizes all permission resolution logic.
@@ -43,7 +43,7 @@ class SettingsPermissionResolver
     public function canAccessSettingsPage(): bool
     {
         try {
-            $plugin = FilamentSettingsPlugin::get();
+            $plugin = AppSettingsPlugin::get();
         } catch (\Throwable) {
             return true; // During testing or early resolution
         }
@@ -61,7 +61,7 @@ class SettingsPermissionResolver
     public function canAccessTab(string $tabKey): bool
     {
         try {
-            $plugin = FilamentSettingsPlugin::get();
+            $plugin = AppSettingsPlugin::get();
         } catch (\Throwable) {
             return true;
         }
@@ -79,7 +79,7 @@ class SettingsPermissionResolver
     public function canAccessSubTab(string $parentTabKey, string $subTabKey): bool
     {
         try {
-            $plugin = FilamentSettingsPlugin::get();
+            $plugin = AppSettingsPlugin::get();
         } catch (\Throwable) {
             return true;
         }

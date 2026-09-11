@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace {{ namespace }};
 
 use Filament\Forms\Components\TextInput;
-use Islamv\FilamentSettingsPlugin\Tabs\SettingsSubTab;
+use Islamv\AppSettingsPlugin\Tabs\SettingsSubTab;
 use {{ settingsClass }};
 
 class {{ class }} extends SettingsSubTab

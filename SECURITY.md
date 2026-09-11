@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-The following table details which versions of `islamv/filament-settings-plugin` currently receive security updates:
+The following table details which versions of `islamv/app-settings-plugin` currently receive security updates:
 
 | Version | Supported          |
 | ------- | ------------------ |
@@ -11,7 +11,7 @@ The following table details which versions of `islamv/filament-settings-plugin` 
 
 ## Reporting a Vulnerability
 
-If you discover a potential security vulnerability within `islamv/filament-settings-plugin`, please report it responsibly instead of opening a public issue.
+If you discover a potential security vulnerability within `islamv/app-settings-plugin`, please report it responsibly instead of opening a public issue.
 
 ### How to Report
 
@@ -31,4 +31,4 @@ Please include the following information in your report:
 3. **Patch & Release**: Confirmed security vulnerabilities will be remediated and released in a patch update as quickly as possible.
 4. **Disclosure**: A public advisory will be published along with the patch release, crediting the reporter if desired.
 
-Thank you for helping keep `islamv/filament-settings-plugin` secure!
+Thank you for helping keep `islamv/app-settings-plugin` secure!

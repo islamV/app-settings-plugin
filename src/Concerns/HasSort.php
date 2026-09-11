@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Islamv\FilamentSettingsPlugin\Concerns;
+namespace Islamv\AppSettingsPlugin\Concerns;
 
 trait HasSort
 {

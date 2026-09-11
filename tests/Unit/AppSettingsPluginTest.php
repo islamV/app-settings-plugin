@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Islamv\FilamentSettingsPlugin\Tests\Unit;
+namespace Islamv\AppSettingsPlugin\Tests\Unit;
 
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
-use Islamv\FilamentSettingsPlugin\FilamentSettingsPlugin;
-use Islamv\FilamentSettingsPlugin\Registry\SettingsRegistry;
-use Islamv\FilamentSettingsPlugin\Tabs\SettingsTab;
-use Islamv\FilamentSettingsPlugin\Tests\TestCase;
+use Islamv\AppSettingsPlugin\AppSettingsPlugin;
+use Islamv\AppSettingsPlugin\Registry\SettingsRegistry;
+use Islamv\AppSettingsPlugin\Tabs\SettingsTab;
+use Islamv\AppSettingsPlugin\Tests\TestCase;
 
-class FilamentSettingsPluginTest extends TestCase
+class AppSettingsPluginTest extends TestCase
 {
     protected function setUp(): void
     {
@@ -21,35 +21,35 @@ class FilamentSettingsPluginTest extends TestCase
 
     public function test_plugin_has_correct_id(): void
     {
-        $plugin = FilamentSettingsPlugin::make();
+        $plugin = AppSettingsPlugin::make();
 
-        $this->assertSame('filament-settings', $plugin->getId());
+        $this->assertSame('app-settings', $plugin->getId());
     }
 
     public function test_default_tabs_enabled_by_default(): void
     {
-        $plugin = FilamentSettingsPlugin::make();
+        $plugin = AppSettingsPlugin::make();
 
         $this->assertTrue($this->getProperty($plugin, 'withDefaultTabs'));
     }
 
     public function test_without_default_tabs_disables_defaults(): void
     {
-        $plugin = FilamentSettingsPlugin::make()->withoutDefaultTabs();
+        $plugin = AppSettingsPlugin::make()->withoutDefaultTabs();
 
         $this->assertFalse($this->getProperty($plugin, 'withDefaultTabs'));
     }
 
     public function test_shield_disabled_by_default(): void
     {
-        $plugin = FilamentSettingsPlugin::make();
+        $plugin = AppSettingsPlugin::make();
 
         $this->assertFalse($plugin->isShieldEnabled());
     }
 
     public function test_shield_can_be_enabled(): void
     {
-        $plugin = FilamentSettingsPlugin::make()->useShield(true);
+        $plugin = AppSettingsPlugin::make()->useShield(true);
 
         $this->assertTrue($plugin->isShieldEnabled());
     }
@@ -62,7 +62,7 @@ class FilamentSettingsPluginTest extends TestCase
         // Only throws when resolveAndRegisterTabs is called.
         // We call it by calling boot()... but boot() needs a panel.
         // Instead, test the guard directly via assertShieldAvailable:
-        $plugin = FilamentSettingsPlugin::make()->useShield(true);
+        $plugin = AppSettingsPlugin::make()->useShield(true);
 
         // Call the private method via reflection
         $ref = new \ReflectionMethod($plugin, 'assertShieldAvailable');
@@ -78,8 +78,8 @@ class FilamentSettingsPluginTest extends TestCase
 
     public function test_locales_returns_config_when_not_set(): void
     {
-        $plugin = FilamentSettingsPlugin::make();
-        config()->set('filament-settings.locales', ['en' => 'English', 'ar' => 'Arabic']);
+        $plugin = AppSettingsPlugin::make();
+        config()->set('app-settings.locales', ['en' => 'English', 'ar' => 'Arabic']);
 
         $locales = $plugin->getLocales();
 
@@ -89,7 +89,7 @@ class FilamentSettingsPluginTest extends TestCase
 
     public function test_locales_can_be_overridden(): void
     {
-        $plugin = FilamentSettingsPlugin::make()->locales([
+        $plugin = AppSettingsPlugin::make()->locales([
             'fr' => ['label' => 'French', 'direction' => 'ltr'],
         ]);
 
@@ -101,7 +101,7 @@ class FilamentSettingsPluginTest extends TestCase
 
     public function test_can_add_manual_tab(): void
     {
-        $plugin = FilamentSettingsPlugin::make()->withoutDefaultTabs();
+        $plugin = AppSettingsPlugin::make()->withoutDefaultTabs();
         $tab = $this->makeFakeTab('custom', 10);
 
         $plugin->tab($tab);
@@ -112,7 +112,7 @@ class FilamentSettingsPluginTest extends TestCase
 
     public function test_can_remove_tab_key(): void
     {
-        $plugin = FilamentSettingsPlugin::make()->removeTab('general');
+        $plugin = AppSettingsPlugin::make()->removeTab('general');
 
         $removedTabs = $this->getProperty($plugin, 'removedTabs');
         $this->assertContains('general', $removedTabs);
