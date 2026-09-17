@@ -201,7 +201,9 @@ class Settings extends Page
 
     protected function buildMainTab(SettingsTab $tab): Tab
     {
-        $filamentTab = Tab::make($tab->getLabel())
+        $filamentTab = Tab::make($tab->getKey())
+            ->label($tab->getLabel())
+            ->key($tab->getKey())
             ->icon($tab->getIcon());
 
         if ($tab->getBadge() !== null) {
@@ -243,7 +245,9 @@ class Settings extends Page
 
     protected function buildSubTab(SettingsTab $parentTab, SettingsSubTab $subTab): Tab
     {
-        $filamentTab = Tab::make($subTab->getLabel())
+        $filamentTab = Tab::make($subTab->getKey())
+            ->label($subTab->getLabel())
+            ->key($subTab->getKey())
             ->icon($subTab->getIcon());
 
         if ($subTab->isTranslatable() && $subTab->hasLocales()) {
@@ -283,7 +287,10 @@ class Settings extends Page
                 $direction
             );
 
-            $tabs[] = Tab::make($label)->schema($localizedSchema);
+            $tabs[] = Tab::make($localeCode)
+                ->label($label)
+                ->key($localeCode)
+                ->schema($localizedSchema);
         }
 
         return $tabs;
