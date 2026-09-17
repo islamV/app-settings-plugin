@@ -42,8 +42,24 @@ class Settings extends Page
 
     public static function getNavigationLabel(): string
     {
-        /** @var string */
-        return config('app-settings.navigation.label', __('app-settings::navigation.label'));
+        /** @var string|null $label */
+        $label = config('app-settings.navigation.label');
+
+        if (filled($label)) {
+            return (string) $label;
+        }
+
+        $translated = __('app-settings::navigation.label');
+        if (is_string($translated) && filled($translated) && $translated !== 'app-settings::navigation.label') {
+            return $translated;
+        }
+
+        $fallback = __('app-settings::filament-settings.navigation.label');
+        if (is_string($fallback) && filled($fallback) && $fallback !== 'app-settings::filament-settings.navigation.label') {
+            return $fallback;
+        }
+
+        return __('merchant.nav_group_settings', [], 'en') ?: 'Settings';
     }
 
     public static function getNavigationGroup(): ?string
@@ -65,12 +81,22 @@ class Settings extends Page
 
     public function getTitle(): string
     {
-        return __('app-settings::navigation.title');
+        $translated = __('app-settings::navigation.title');
+        if (is_string($translated) && filled($translated) && $translated !== 'app-settings::navigation.title') {
+            return $translated;
+        }
+
+        $fallback = __('app-settings::filament-settings.navigation.title');
+        if (is_string($fallback) && filled($fallback) && $fallback !== 'app-settings::filament-settings.navigation.title') {
+            return $fallback;
+        }
+
+        return __('merchant.nav_group_settings', [], 'en') ?: 'Settings';
     }
 
     public function getHeading(): string
     {
-        return __('app-settings::navigation.title');
+        return $this->getTitle();
     }
 
     // ─────────────────────────────────────────
