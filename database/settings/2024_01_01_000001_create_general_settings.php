@@ -8,10 +8,14 @@ return new class extends SettingsMigration
     {
         $this->migrator->add('general.app_name', '');
         $this->migrator->add('general.app_description', '');
+        $this->migrator->add('general.app_name', 'Demo App');
+        $this->migrator->add('general.app_description', 'Demo App Description');
         $this->migrator->add('general.logo', null);
         $this->migrator->add('general.favicon', null);
         $this->migrator->add('general.support_email', '');
         $this->migrator->add('general.support_phone', '');
+        $this->migrator->add('general.support_email', 'demo@gmail.com');
+        $this->migrator->add('general.support_phone', '+20 100 000 0000');
     }
 
     public function down(): void

@@ -79,4 +79,27 @@ class GeneralSettingsTab extends SettingsTab
                 ->columnSpan(1),
         ];
     }
+
+    public function loadSettings(): array
+    {
+        $data = parent::loadSettings();
+
+        if (empty($data['app_name'])) {
+            $data['app_name'] = 'سكني هب | SakaniHub';
+        }
+
+        if (empty($data['app_description'])) {
+            $data['app_description'] = 'منصة إدارة وتأجير العقارات والوحدات السكنية المتكاملة';
+        }
+
+        if (empty($data['support_email'])) {
+            $data['support_email'] = 'support@sakanihub.com';
+        }
+
+        if (empty($data['support_phone'])) {
+            $data['support_phone'] = '+20 100 000 0000';
+        }
+
+        return $data;
+    }
 }
