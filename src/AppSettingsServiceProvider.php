@@ -36,6 +36,10 @@ class AppSettingsServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
+        \Filament\Support\Facades\FilamentAsset::register([
+            \Filament\Support\Assets\Css::make('app-settings', __DIR__ . '/../resources/css/app-settings.css'),
+        ], 'islamv/app-settings-plugin');
+
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../stubs' => base_path('stubs/app-settings'),

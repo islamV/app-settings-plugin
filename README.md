@@ -100,7 +100,7 @@ In your `PanelProvider`:
 
 ```php
 AppSettingsPlugin::make()
-    ->layout('sidebar') // Switch to 'sidebar' layout instead of default 'tabs'
+    ->layout(\Islamv\AppSettingsPlugin\Enums\SettingsLayout::Sidebar) // Switch to sidebar layout instead of default tabs
     ->useShield(true) // Enable Filament Shield permission checks
     ->withoutDefaultTabs() // Disable built-in General, Social, Static Pages tabs
     ->removeTab('social-links') // Remove a specific tab
@@ -127,7 +127,7 @@ The plugin provides two distinct layouts for the settings page:
 You can change the layout via the plugin configuration in your Panel Provider:
 
 ```php
-AppSettingsPlugin::make()->layout('sidebar'); // Or use SettingsLayout::Sidebar
+AppSettingsPlugin::make()->layout(\Islamv\AppSettingsPlugin\Enums\SettingsLayout::Sidebar);
 ```
 
 ### Grouping Tabs in Sidebar Layout

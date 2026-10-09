@@ -1,9 +1,9 @@
 <x-filament-panels::page>
-    <div class="flex flex-col md:flex-row gap-6 md:items-start">
+    <div class="app-settings-sidebar-wrapper">
         <!-- Sidebar navigation -->
-        <div class="w-full md:w-64 lg:w-72 shrink-0">
+        <div class="app-settings-sidebar-col">
             <!-- Mobile Select Navigation -->
-            <div class="md:hidden mb-6">
+            <div class="app-settings-mobile-dropdown">
                 <x-filament::input.wrapper>
                     <x-filament::input.select wire:model.live="activeTab">
                         @foreach($this->getGroupedTabs() as $group => $tabs)
@@ -22,33 +22,33 @@
             </div>
 
             <!-- Desktop Vertical Navigation -->
-            <div class="hidden md:flex sticky top-6 flex-col gap-6">
+            <div class="app-settings-desktop-nav">
                 <!-- Grouped tabs -->
                 @php
                     $groups = $this->getGroupedTabs();
                 @endphp
                 @foreach($groups as $group => $tabs)
-                    <div class="flex flex-col gap-1">
+                    <div class="app-settings-nav-group">
                         @if($group)
-                            <h3 class="px-3 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
+                            <h3 class="app-settings-nav-title">
                                 {{ $group }}
                             </h3>
                         @endif
-                        <ul class="flex flex-col gap-1">
+                        <ul class="app-settings-nav-list">
                             @foreach($tabs as $tab)
                                 <li>
                                     <button 
                                         type="button" 
                                         wire:click="$set('activeTab', '{{ $tab->getKey() }}')"
-                                        class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium w-full text-left transition-colors {{ $activeTab === $tab->getKey() ? 'bg-gray-100 dark:bg-white/5 text-primary-600 dark:text-primary-500' : 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-white/10' }}"
+                                        class="app-settings-nav-btn {{ $activeTab === $tab->getKey() ? 'is-active' : '' }}"
                                     >
                                         @if($tab->getIcon())
                                             <x-filament::icon 
                                                 :icon="$tab->getIcon()" 
-                                                class="w-5 h-5 {{ $activeTab === $tab->getKey() ? 'text-primary-600 dark:text-primary-500' : 'text-gray-400 dark:text-gray-500' }}" 
+                                                class="app-settings-nav-icon" 
                                             />
                                         @endif
-                                        <span class="flex-1">{{ $tab->getLabel() }}</span>
+                                        <span class="app-settings-nav-text">{{ $tab->getLabel() }}</span>
                                         @if($tab->getBadge())
                                             <x-filament::badge size="sm" :color="$tab->getBadgeColor() ?? 'primary'">
                                                 {{ $tab->getBadge() }}

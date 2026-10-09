@@ -1,0 +1,128 @@
+/* App Settings Plugin Styles */
+
+/* Mobile-first defaults */
+.app-settings-sidebar-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* gap-6 */
+}
+
+.app-settings-sidebar-col {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.app-settings-mobile-dropdown {
+    display: block;
+    margin-bottom: 1.5rem; /* mb-6 */
+}
+
+.app-settings-desktop-nav {
+    display: none;
+}
+
+/* Desktop layout (lg: >= 1024px) */
+@media (min-width: 1024px) {
+    .app-settings-sidebar-wrapper {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .app-settings-sidebar-col {
+        width: 16rem; /* lg:w-64 instead of w-72 */
+    }
+    
+    .app-settings-mobile-dropdown {
+        display: none;
+    }
+    
+    .app-settings-desktop-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        position: sticky;
+        top: 1.5rem; /* top-6 */
+    }
+}
+
+/* Custom Navigation Styles */
+.app-settings-nav-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.app-settings-nav-title {
+    padding: 0 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgb(107, 114, 128);
+    margin-bottom: 0.25rem;
+}
+.dark .app-settings-nav-title {
+    color: rgb(156, 163, 175);
+}
+
+.app-settings-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.app-settings-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    width: 100%;
+    text-align: left;
+    transition: all 0.2s;
+    color: rgb(55, 65, 81);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+.dark .app-settings-nav-btn {
+    color: rgb(229, 231, 235);
+}
+
+.app-settings-nav-btn:hover {
+    background-color: rgb(249, 250, 251);
+}
+.dark .app-settings-nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.app-settings-nav-btn.is-active {
+    background-color: rgb(243, 244, 246);
+    color: var(--primary-600, rgb(79, 70, 229));
+}
+.dark .app-settings-nav-btn.is-active {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--primary-500, rgb(99, 102, 241));
+}
+
+.app-settings-nav-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: rgb(156, 163, 175);
+    flex-shrink: 0;
+}
+.dark .app-settings-nav-icon {
+    color: rgb(107, 114, 128);
+}
+.app-settings-nav-btn.is-active .app-settings-nav-icon {
+    color: currentColor;
+}
+
+.app-settings-nav-text {
+    flex: 1;
+}
