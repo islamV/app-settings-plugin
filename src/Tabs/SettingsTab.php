@@ -42,6 +42,8 @@ abstract class SettingsTab
 
     protected null|string|Closure $badgeColor = null;
 
+    protected ?string $group = null;
+
     // ─────────────────────────────────────────
     // Required overrides
     // ─────────────────────────────────────────
@@ -111,6 +113,13 @@ abstract class SettingsTab
     public function badge(string|Closure|null $badge): static
     {
         $this->badge = $badge instanceof Closure ? $badge() : $badge;
+
+        return $this;
+    }
+
+    public function group(?string $group): static
+    {
+        $this->group = $group;
 
         return $this;
     }
@@ -210,6 +219,11 @@ abstract class SettingsTab
         }
 
         return $this->badgeColor;
+    }
+
+    public function getGroup(): ?string
+    {
+        return $this->group;
     }
 
     /**

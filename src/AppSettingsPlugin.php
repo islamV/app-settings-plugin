@@ -9,6 +9,7 @@ use Closure;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Islamv\AppSettingsPlugin\Discovery\TabDiscovery;
+use Islamv\AppSettingsPlugin\Enums\SettingsLayout;
 use Islamv\AppSettingsPlugin\Pages\Settings;
 use Islamv\AppSettingsPlugin\Registry\SettingsRegistry;
 use Islamv\AppSettingsPlugin\Tabs\Defaults\GeneralSettingsTab;
@@ -46,6 +47,8 @@ class AppSettingsPlugin implements Plugin
     protected ?string $discoveryPath = null;
 
     protected ?string $discoveryNamespace = null;
+
+    protected SettingsLayout $layout = SettingsLayout::Tabs;
 
     public function getId(): string
     {
@@ -87,6 +90,17 @@ class AppSettingsPlugin implements Plugin
     public function withoutDefaultTabs(): static
     {
         $this->withDefaultTabs = false;
+
+        return $this;
+    }
+
+    public function layout(SettingsLayout|string $layout): static
+    {
+        if (is_string($layout)) {
+            $layout = SettingsLayout::from($layout);
+        }
+
+        $this->layout = $layout;
 
         return $this;
     }
@@ -173,6 +187,17 @@ class AppSettingsPlugin implements Plugin
     public function isShieldEnabled(): bool
     {
         return $this->useShield;
+    }
+
+    public function getLayout(): SettingsLayout
+    {
+        $configLayout = config('app-settings.layout');
+        
+        if ($configLayout) {
+            return is_string($configLayout) ? SettingsLayout::from($configLayout) : $configLayout;
+        }
+
+        return $this->layout;
     }
 
     /**

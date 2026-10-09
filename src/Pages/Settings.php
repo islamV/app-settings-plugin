@@ -12,10 +12,13 @@ use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
+use Islamv\AppSettingsPlugin\AppSettingsPlugin;
 use Islamv\AppSettingsPlugin\Authorization\SettingsPermissionResolver;
+use Islamv\AppSettingsPlugin\Enums\SettingsLayout;
 use Islamv\AppSettingsPlugin\Registry\SettingsRegistry;
 use Islamv\AppSettingsPlugin\Tabs\SettingsSubTab;
 use Islamv\AppSettingsPlugin\Tabs\SettingsTab;
+use Livewire\Attributes\Url;
 
 /**
  * The single Settings Filament Page.
@@ -32,6 +35,9 @@ use Islamv\AppSettingsPlugin\Tabs\SettingsTab;
 class Settings extends Page
 {
     protected static string|\BackedEnum|null $navigationIcon = Heroicon::OutlinedCog6Tooth;
+
+    #[Url(as: 'tab')]
+    public ?string $activeTab = null;
 
     /** @var array<string, mixed> */
     public ?array $data = [];
@@ -99,6 +105,17 @@ class Settings extends Page
         return $this->getTitle();
     }
 
+    public function getView(): string
+    {
+        $layout = AppSettingsPlugin::get()->getLayout();
+
+        if ($layout === SettingsLayout::Sidebar) {
+            return 'app-settings::layouts.sidebar';
+        }
+
+        return parent::getView();
+    }
+
     // ─────────────────────────────────────────
     // Authorization
     // ─────────────────────────────────────────
@@ -124,7 +141,13 @@ class Settings extends Page
     {
         $formData = [];
 
-        foreach ($this->getAccessibleTabs() as $tab) {
+        $tabs = $this->getAccessibleTabs();
+
+        if (empty($this->activeTab) && count($tabs) > 0) {
+            $this->activeTab = $tabs[0]->getKey();
+        }
+
+        foreach ($tabs as $tab) {
             if ($tab->hasSubTabs()) {
                 foreach ($tab->getSubTabs() as $subTab) {
                     if (! $subTab->isAccessible()) {
@@ -169,6 +192,31 @@ class Settings extends Page
 
     public function form(Schema $schema): Schema
     {
+        $layout = AppSettingsPlugin::get()->getLayout();
+
+        if ($layout === SettingsLayout::Sidebar) {
+            $activeSettingsTab = collect($this->getAccessibleTabs())
+                ->firstWhere(fn (SettingsTab $t) => $t->getKey() === $this->activeTab);
+
+            if (! $activeSettingsTab) {
+                return $schema->statePath('data')->components([]);
+            }
+
+            if ($activeSettingsTab->hasSubTabs()) {
+                $components = [
+                    Tabs::make($activeSettingsTab->getKey().'__subtabs')
+                        ->persistTabInQueryString('subtab')
+                        ->tabs($this->buildSubTabs($activeSettingsTab)),
+                ];
+            } else {
+                $components = $activeSettingsTab->schema();
+                $components = $this->prefixFieldNames($components, $activeSettingsTab->getKey().'__');
+                $components[] = $this->makeSaveAction('save_'.$activeSettingsTab->getKey(), fn () => $this->saveMainTab($activeSettingsTab));
+            }
+
+            return $schema->statePath('data')->components($components);
+        }
+
         return $schema
             ->statePath('data')
             ->components([
@@ -181,6 +229,20 @@ class Settings extends Page
     public function content(Schema $schema): Schema
     {
         return $this->form($schema);
+    }
+
+    /**
+     * @return array<string, array<SettingsTab>>
+     */
+    public function getGroupedTabs(): array
+    {
+        $groups = [];
+        foreach ($this->getAccessibleTabs() as $tab) {
+            $group = $tab->getGroup() ?? '';
+            $groups[$group][] = $tab;
+        }
+
+        return $groups;
     }
 
     // ─────────────────────────────────────────
