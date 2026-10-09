@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Islamv\AppSettingsPlugin\Pages;
 
 use Filament\Actions\Action;
+use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Filament\Schemas\Components\Actions as SchemaActions;
@@ -34,7 +35,7 @@ use Livewire\Attributes\Url;
  */
 class Settings extends Page
 {
-    use \Filament\Forms\Concerns\InteractsWithForms;
+    use InteractsWithForms;
 
     protected static string|\BackedEnum|null $navigationIcon = Heroicon::OutlinedCog6Tooth;
 

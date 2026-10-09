@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Islamv\AppSettingsPlugin;
 
+use Filament\Support\Assets\Css;
+use Filament\Support\Facades\FilamentAsset;
 use Islamv\AppSettingsPlugin\Commands\MakeSettingsPageCommand;
 use Islamv\AppSettingsPlugin\Commands\MakeSettingsSubTabCommand;
 use Islamv\AppSettingsPlugin\Commands\MakeSettingsTabCommand;
@@ -36,8 +38,8 @@ class AppSettingsServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
-        \Filament\Support\Facades\FilamentAsset::register([
-            \Filament\Support\Assets\Css::make('app-settings', __DIR__ . '/../resources/css/app-settings.css'),
+        FilamentAsset::register([
+            Css::make('app-settings', __DIR__.'/../resources/css/app-settings.css'),
         ], 'islamv/app-settings-plugin');
 
         if ($this->app->runningInConsole()) {
