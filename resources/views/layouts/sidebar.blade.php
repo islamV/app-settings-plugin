@@ -2,7 +2,27 @@
     <div class="flex flex-col md:flex-row gap-6 md:items-start">
         <!-- Sidebar navigation -->
         <div class="w-full md:w-64 lg:w-72 shrink-0">
-            <div class="sticky top-6 flex flex-col gap-6">
+            <!-- Mobile Select Navigation -->
+            <div class="md:hidden mb-6">
+                <x-filament::input.wrapper>
+                    <x-filament::input.select wire:model.live="activeTab">
+                        @foreach($this->getGroupedTabs() as $group => $tabs)
+                            @if($group)
+                                <optgroup label="{{ $group }}">
+                            @endif
+                            @foreach($tabs as $tab)
+                                <option value="{{ $tab->getKey() }}">{{ $tab->getLabel() }}</option>
+                            @endforeach
+                            @if($group)
+                                </optgroup>
+                            @endif
+                        @endforeach
+                    </x-filament::input.select>
+                </x-filament::input.wrapper>
+            </div>
+
+            <!-- Desktop Vertical Navigation -->
+            <div class="hidden md:flex sticky top-6 flex-col gap-6">
                 <!-- Grouped tabs -->
                 @php
                     $groups = $this->getGroupedTabs();

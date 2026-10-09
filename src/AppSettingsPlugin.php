@@ -192,7 +192,7 @@ class AppSettingsPlugin implements Plugin
     public function getLayout(): SettingsLayout
     {
         $configLayout = config('app-settings.layout');
-        
+
         if ($configLayout) {
             return is_string($configLayout) ? SettingsLayout::from($configLayout) : $configLayout;
         }

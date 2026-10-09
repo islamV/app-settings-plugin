@@ -21,6 +21,7 @@ class AppSettingsServiceProvider extends PackageServiceProvider
             ->name(static::$name)
             ->hasConfigFile('app-settings')
             ->hasTranslations()
+            ->hasViews()
             ->hasCommands([
                 MakeSettingsTabCommand::class,
                 MakeSettingsSubTabCommand::class,

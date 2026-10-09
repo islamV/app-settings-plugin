@@ -1,0 +1,121 @@
+PHPUnit 12.5.35 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/phpunit.xml
+
+[31;1mE[0m                                                                   1 / 1 (100%)
+
+Time: 00:00.631, Memory: 59.50 MB
+
+There was 1 error:
+
+1) Islamv\AppSettingsPlugin\Tests\Unit\SettingsPageLayoutTest::test_sidebar_renders_correctly
+Illuminate\View\ViewException: Unable to locate a class or view for component [filament::icon]. (View: /media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/resources/views/layouts/sidebar.blade.php)
+
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/Compilers/ComponentTagCompiler.php:315
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php:58
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php:59
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php:22
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php:76
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php:10
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/View.php:208
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/View.php:191
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/View.php:160
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php:353
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:363
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Features/SupportTesting/InitialRender.php:25
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php:39
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Routing/Route.php:243
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Routing/Route.php:214
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Routing/Router.php:822
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:137
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Routing/Router.php:821
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Routing/Router.php:800
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Routing/Router.php:764
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Routing/Router.php:753
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php:200
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:137
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php:175
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php:144
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:607
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Features/SupportTesting/InitialRender.php:33
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Features/SupportTesting/RequestBroker.php:33
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Mechanisms/HandleRequests/HandleRequests.php:147
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Features/SupportTesting/RequestBroker.php:32
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Features/SupportTesting/InitialRender.php:32
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Features/SupportTesting/Render.php:24
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Features/SupportTesting/InitialRender.php:31
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Features/SupportTesting/InitialRender.php:17
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Features/SupportTesting/Testable.php:50
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/LivewireManager.php:240
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:363
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/tests/Unit/SettingsPageLayoutTest.php:70
+
+Caused by
+InvalidArgumentException: Unable to locate a class or view for component [filament::icon].
+
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/Compilers/ComponentTagCompiler.php:315
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/Compilers/ComponentTagCompiler.php:235
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/Compilers/ComponentTagCompiler.php:220
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/Compilers/ComponentTagCompiler.php:215
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/Compilers/ComponentTagCompiler.php:89
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/Compilers/ComponentTagCompiler.php:76
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php:456
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php:288
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php:188
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php:68
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php:16
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/View.php:208
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/View.php:191
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/View.php:160
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Mechanisms/HandleComponents/HandleComponents.php:333
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Mechanisms/HandleComponents/HandleComponents.php:384
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Mechanisms/HandleComponents/HandleComponents.php:325
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Mechanisms/HandleComponents/HandleComponents.php:65
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/LivewireManager.php:103
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/orchestra/testbench-core/laravel/storage/framework/views/e451095d0894be98325fbe5f8ed426fb.php:14
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:123
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:124
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php:57
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php:22
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php:76
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php:10
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/View.php:208
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/View.php:191
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/View.php:160
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php:353
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:363
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Features/SupportTesting/InitialRender.php:25
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php:39
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Routing/Route.php:243
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Routing/Route.php:214
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Routing/Router.php:822
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:137
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Routing/Router.php:821
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Routing/Router.php:800
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Routing/Router.php:764
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Routing/Router.php:753
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php:200
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:180
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:137
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php:175
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php:144
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php:607
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Features/SupportTesting/InitialRender.php:33
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Features/SupportTesting/RequestBroker.php:33
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Mechanisms/HandleRequests/HandleRequests.php:147
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Features/SupportTesting/RequestBroker.php:32
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Features/SupportTesting/InitialRender.php:32
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Features/SupportTesting/Render.php:24
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Features/SupportTesting/InitialRender.php:31
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Features/SupportTesting/InitialRender.php:17
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/Features/SupportTesting/Testable.php:50
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/livewire/livewire/src/LivewireManager.php:240
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:363
+/media/islam/web/Libya Card Partners/filament-settings-plugin-workspace/tests/Unit/SettingsPageLayoutTest.php:70
+
+[37;41mERRORS![0m
+[37;41mTests: 1[0m[37;41m, Assertions: 0[0m[37;41m, Errors: 1[0m[37;41m.[0m

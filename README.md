@@ -100,6 +100,7 @@ In your `PanelProvider`:
 
 ```php
 AppSettingsPlugin::make()
+    ->layout('sidebar') // Switch to 'sidebar' layout instead of default 'tabs'
     ->useShield(true) // Enable Filament Shield permission checks
     ->withoutDefaultTabs() // Disable built-in General, Social, Static Pages tabs
     ->removeTab('social-links') // Remove a specific tab
@@ -108,8 +109,40 @@ AppSettingsPlugin::make()
         'ar' => ['label' => 'Arabic', 'direction' => 'rtl'],
         'fr' => ['label' => 'French', 'direction' => 'ltr'],
     ])
-    ->tab(PaymentSettingsTab::make()) // Register custom tab manually
+    ->tab(PaymentSettingsTab::make()->group('Finance')) // Grouping in sidebar layout
     ->subTab('static-pages', ContactUsSubTab::make()); // Register sub-tab under existing tab
+```
+
+---
+
+## Layout Options
+
+The plugin provides two distinct layouts for the settings page:
+
+1. **Tabs Layout (`tabs`)**: The default layout. Displays top-level sections as horizontal tabs across the top of the page.
+2. **Sidebar Layout (`sidebar`)**: A secondary layout where top-level sections are displayed in a vertical navigation sidebar on the left, with the active section's form on the right.
+
+### Enabling the Sidebar Layout
+
+You can change the layout via the plugin configuration in your Panel Provider:
+
+```php
+AppSettingsPlugin::make()->layout('sidebar'); // Or use SettingsLayout::Sidebar
+```
+
+### Grouping Tabs in Sidebar Layout
+
+When using the `sidebar` layout, you can logically group tabs by assigning a `group` name. 
+
+```php
+// In a custom tab class
+public function getGroup(): ?string
+{
+    return 'Account & Security';
+}
+
+// Or fluently
+$plugin->tab(PaymentSettingsTab::make()->group('Finance'));
 ```
 
 ---

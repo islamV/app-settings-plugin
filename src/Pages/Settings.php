@@ -34,6 +34,8 @@ use Livewire\Attributes\Url;
  */
 class Settings extends Page
 {
+    use \Filament\Forms\Concerns\InteractsWithForms;
+
     protected static string|\BackedEnum|null $navigationIcon = Heroicon::OutlinedCog6Tooth;
 
     #[Url(as: 'tab')]
@@ -205,7 +207,7 @@ class Settings extends Page
             if ($activeSettingsTab->hasSubTabs()) {
                 $components = [
                     Tabs::make($activeSettingsTab->getKey().'__subtabs')
-                        ->persistTabInQueryString('subtab')
+                        ->id($activeSettingsTab->getKey().'__subtabs')
                         ->tabs($this->buildSubTabs($activeSettingsTab)),
                 ];
             } else {
@@ -221,7 +223,7 @@ class Settings extends Page
             ->statePath('data')
             ->components([
                 Tabs::make('settings_tabs')
-                    ->persistTabInQueryString('tab')
+                    ->id('settings_tabs')
                     ->tabs($this->buildMainTabs()),
             ]);
     }
@@ -275,7 +277,7 @@ class Settings extends Page
         if ($tab->hasSubTabs()) {
             $filamentTab->schema([
                 Tabs::make($tab->getKey().'__subtabs')
-                    ->persistTabInQueryString('subtab')
+                    ->id($tab->getKey().'__subtabs')
                     ->tabs($this->buildSubTabs($tab)),
             ]);
         } else {
@@ -316,7 +318,7 @@ class Settings extends Page
             // Render locale tabs
             $filamentTab->schema([
                 Tabs::make($parentTab->getKey().'__'.$subTab->getKey().'__locales')
-                    ->persistTabInQueryString('locale')
+                    ->id($parentTab->getKey().'__'.$subTab->getKey().'__locales')
                     ->tabs($this->buildLocaleTabs($parentTab, $subTab)),
             ]);
         } else {
