@@ -1,0 +1,16 @@
+* text=auto eol=lf
+
+# Keep development-only files out of Composer distribution archives.
+/.github                export-ignore
+/.gitignore             export-ignore
+/.gitattributes         export-ignore
+/.phpunit.result.cache  export-ignore
+/tests                  export-ignore
+/docs                   export-ignore
+/phpunit.xml            export-ignore
+/composer.lock          export-ignore
+/SECURITY.md            export-ignore
+/CHANGELOG.md           export-ignore
+/CONTRIBUTING.md        export-ignore
+/renovate.json          export-ignore
+/error.log              export-ignore
